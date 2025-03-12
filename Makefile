@@ -1,11 +1,11 @@
-NAME			=	sample
+NAME			=	so_long
 
-CC				=	cc 
+CC				=	cc
 
 CFLAGS			=	-Wall -Wextra -Werror
 
 
-INCS			=	-I includes/ -I $(MLX_DIR)
+INCS			=	-I includes/ -I $(LIBFT_DIR) -I $(PRINTF_DIR) -I $(MLX_DIR)
 
 SRCS_PATH		=	src/
 SRCS			=	$(wildcard $(SRCS_PATH)*.c)
@@ -13,7 +13,11 @@ SRCS			=	$(wildcard $(SRCS_PATH)*.c)
 OBJS_PATH		=	objs/
 OBJS			=	$(SRCS:src/%.c=objs/%.o)
 
+LIBFT_DIR		=	libft/
+LIBFT			=	$(LIBFT_DIR)libft.a
 
+PRINTF_DIR		=	ft_printf/
+PRINTF			=	$(PRINTF_DIR)libftprintf.a
 
 MLX_DIR			=	minilibx/
 MLX				=	$(MLX_DIR)libmlx_Linux.a
@@ -32,8 +36,8 @@ endif
 
 all:	$(NAME)
 
-$(NAME): $(OBJS) $(MLX)
-	$(CC) $(CFLAGS) $(INCS) $(OBJS) $(MLX) $(FRAMEWORKS) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT) $(PRINTF) $(MLX)
+	$(CC) $(CFLAGS) $(INCS) $(OBJS) $(LIBFT) $(PRINTF) $(MLX) $(FRAMEWORKS) -o $(NAME)
 
 $(OBJS_PATH)%.o : $(SRCS_PATH)%.c
 	mkdir -p $(@D)
@@ -43,6 +47,11 @@ $(OBJS_PATH)%.o : $(SRCS_PATH)%.c
 bonus:	all
 
 
+$(LIBFT):
+	make bonus -C $(LIBFT_DIR)
+
+$(PRINTF):
+	make -C $(PRINTF_DIR)
 
 $(MLX): | $(MLX_DIR)
 	$(MAKE) -C $(MLX_DIR)
@@ -52,10 +61,14 @@ $(MLX_DIR):
 
 
 clean:
+	make clean -C $(LIBFT_DIR)
+	make clean -C $(PRINTF_DIR)
 	make clean -C $(MLX_DIR)
 	rm -rf $(OBJS_PATH)
 
 fclean:
+	make fclean -C $(LIBFT_DIR)
+	make fclean -C $(PRINTF_DIR)
 	rm -rf $(MLX_DIR)
 	rm -rf $(OBJS_PATH)
 	rm -f $(NAME)
