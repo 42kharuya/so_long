@@ -6,7 +6,7 @@
 /*   By: kharuya <haruya.0411.k@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 23:01:30 by kharuya           #+#    #+#             */
-/*   Updated: 2025/03/12 22:51:58 by kharuya          ###   ########.fr       */
+/*   Updated: 2025/03/13 19:13:14 by kharuya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static	char	*make_line(char **save, ssize_t count_byte)
 		null_free (save);
 		return (ans);
 	}
-	ans = make_ans(*save, count_byte);
+	ans = make_ans(*save, count_byte - 1);
 	if (!ans)
 		return (null_free(save));
 	tmp = ft_substr(*save, count_byte, BUFFER_SIZE);

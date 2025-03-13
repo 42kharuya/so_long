@@ -8,7 +8,8 @@ CFLAGS			=	-Wall -Wextra -Werror
 INCS			=	-I includes/ -I $(LIBFT_DIR) -I $(PRINTF_DIR) -I $(MLX_DIR)
 
 SRCS_PATH		=	src/
-SRCS			=	$(wildcard $(SRCS_PATH)*.c)
+SRCS_PARSE_PATH =	src/parse/
+SRCS			=	$(wildcard $(SRCS_PATH)*.c) $(wildcard $(SRCS_PARSE_PATH)*.c)
 
 OBJS_PATH		=	objs/
 OBJS			=	$(SRCS:src/%.c=objs/%.o)
