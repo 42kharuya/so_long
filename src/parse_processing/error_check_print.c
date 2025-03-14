@@ -24,6 +24,10 @@ void	error_check_print(int error_check)
 	else if (error_check == NUMBER_OF_ARGUMENT_ERROR)
 		ft_printf("Usage: ./so_long [path_of_map]\n");
 	else if (error_check == MAP_SURROUNDED_ERROR)
-		ft_printf("map is not surrounded/enclosed by wall\n");
+		ft_printf("map is not surrounded/enclosed by wall.\n");
+	else if (error_check == PLAYBLE_COLLECTIVE_ERROR)
+		ft_printf("map is not playble. Unable to acquire collectible.\n");
+	else if (error_check == PLAYBLE_EXIT_ERROR)
+		ft_printf("map is not playble. can't get to the exit.\n");
 	exit(EXIT_FAILURE);
 }

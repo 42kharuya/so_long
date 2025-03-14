@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kharuya <kharuya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kharuya <haruya.0411.k@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 13:54:54 by kharuya           #+#    #+#             */
-/*   Updated: 2024/05/14 11:02:37 by kharuya          ###   ########.fr       */
+/*   Updated: 2025/03/14 21:43:58 by kharuya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,31 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	unsigned int	s_len;
-	char			*ans;
-	int				i;
+	char	*substr;
+	size_t	sub_len;
+	size_t	i;
 
 	if (!s)
 		return (NULL);
-	s_len = ft_strlen(s);
-	if (start >= s_len || !len)
-		return (ft_calloc(1, 1));
-	if (s_len - start < len)
-		len = s_len - start;
-	ans = (char *)malloc(sizeof(char) * (len + 1));
-	if (!ans)
-		return (ans);
-	while (start-- > 0)
-		s++;
+	sub_len = ft_strlen(s);
+	if (sub_len <= start)
+	{
+		substr = (char *)malloc(1);
+		if (substr == NULL)
+			return (NULL);
+		substr[0] = '\0';
+		return (substr);
+	}
+	if (sub_len < start + len)
+		len = sub_len - start;
+	substr = (char *)malloc((len + 1) * sizeof(char));
+	if (!substr)
+		return (NULL);
 	i = -1;
-	while (s[++i] && len-- > 0)
-		ans[i] = s[i];
-	ans[i] = '\0';
-	return (ans);
+	while (++i < len && s[start + i])
+		substr[i] = s[start + i];
+	substr[i] = '\0';
+	return (substr);
 }
 
 // static void check_substr(char *actual,char *expected)
