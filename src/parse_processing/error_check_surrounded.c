@@ -7,20 +7,24 @@ static void horizontal_check(char **map, int vertical)
 	int last_row;
 
 	first_row = 0;
-	i = 0;
-	while (map[first_row][i] != '\0')
+	i = -1;
+	while (map[first_row][++i] != '\0')
 	{
 		if (map[first_row][i] != '1')
-			error_check_print(MAP_SURROUNDED_ERROR);
-		i++;
+		{
+			ft_free_map(map);
+			error_check_parse_print(MAP_SURROUNDED_ERROR);
+		}
 	}
 	last_row = vertical - 1;
-	i = 0;
-	while (map[last_row][i] != '\0')
+	i = -1;
+	while (map[last_row][++i] != '\0')
 	{
 		if (map[last_row][i] != '1')
-			error_check_print(MAP_SURROUNDED_ERROR);
-		i++;
+		{
+			ft_free_map(map);
+			error_check_parse_print(MAP_SURROUNDED_ERROR);
+		}
 	}
 	return ;
 }
@@ -32,20 +36,24 @@ static void vertical_check(char **map, int horizotal)
 	int	last_column;
 
 	first_column = 0;
-	i = 0;
-	while (map[i] != NULL)
+	i = -1;
+	while (map[++i] != NULL)
 	{
 		if (map[i][first_column] != '1')
-			error_check_print(MAP_SURROUNDED_ERROR);
-		i++;
+		{
+			ft_free_map(map);
+			error_check_parse_print(MAP_SURROUNDED_ERROR);
+		}
 	}
 	last_column = horizotal - 1;
-	i = 0;
-	while (map[i] != NULL)
+	i = -1;
+	while (map[++i] != NULL)
 	{
 		if (map[i][last_column] != '1')
-			error_check_print(MAP_SURROUNDED_ERROR);
-		i++;
+		{
+			ft_free_map(map);
+			error_check_parse_print(MAP_SURROUNDED_ERROR);
+		}
 	}
 	return ;
 }

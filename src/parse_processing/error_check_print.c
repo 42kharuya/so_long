@@ -1,6 +1,6 @@
 #include "../../includes/so_long.h"
 
-void	error_check_print(int error_check)
+void	error_check_parse_print(int error_check)
 {
 	ft_printf ("Error\n");
 	if (error_check == OPEN_ERROR)

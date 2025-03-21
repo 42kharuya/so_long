@@ -1,4 +1,4 @@
-#include "../includes/so_long.h"
+#include "../../includes/so_long.h"
 
 void	error_check_rectangular(char **map)
 {
@@ -11,7 +11,10 @@ void	error_check_rectangular(char **map)
 	while (map[i])
 	{
 		if (ft_strlen(map[i]) != pre_length)
-			error_check_print(RECTANGULAR_ERROR);
+		{
+			ft_free_map(map);
+			error_check_parse_print(RECTANGULAR_ERROR);
+		}
 		i++;
 	}
 	return ;
