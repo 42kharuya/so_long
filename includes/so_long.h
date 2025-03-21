@@ -48,6 +48,11 @@ typedef struct s_img
 	void	*exit;
 	void	*wall;
 	void	*space;
+	char	*buffer_player;
+	char	*buffer_collectible;
+	char	*buffer_exit;
+	char	*buffer_wall;
+	char	*buffer_space;
 } t_img;
 
 // prototype
@@ -66,6 +71,9 @@ char		**init_struct_map_info_map_visitable_init(t_map map_info);
 void		init_struct_map_info_map_visitable(char **map_visitable, int x, int y);
 void		ft_free(t_map *map_info);
 void		ft_free_map(char **map);
+t_img		init_struct_img_info(void *mlx);
+void		ft_free_img(t_img *img_info, void *mlx);
+void		window_set_element(void *img, t_img img_info, t_map map_info);
 
 
 #endif

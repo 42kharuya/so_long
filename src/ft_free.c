@@ -13,6 +13,16 @@ void	ft_free_map(char **map)
 	return ;
 }
 
+void	ft_free_img(t_img *img_info, void *mlx)
+{
+	mlx_destroy_image(mlx, img_info->collectible);
+	mlx_destroy_image(mlx, img_info->exit);
+	mlx_destroy_image(mlx, img_info->player);
+	mlx_destroy_image(mlx, img_info->wall);
+	mlx_destroy_image(mlx, img_info->space);
+	return ;
+}
+
 void	ft_free(t_map *map_info)
 {
 	ft_free_map(map_info->map);

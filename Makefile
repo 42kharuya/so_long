@@ -2,14 +2,15 @@ NAME			=	so_long
 
 CC				=	cc
 
-CFLAGS			=	-Wall -Wextra -Werror
+CFLAGS			=	-Wall -Wextra -Werror 
 
 
 INCS			=	-I includes/ -I $(LIBFT_DIR) -I $(PRINTF_DIR) -I $(MLX_DIR)
 
 SRCS_PATH		=	src/
 SRCS_PARSE_PATH =	src/parse_processing/
-SRCS			=	$(wildcard $(SRCS_PATH)*.c ) $(wildcard $(SRCS_PARSE_PATH)*.c)
+SRCS_MAIN_PATH =	src/main_processing/
+SRCS			=	$(wildcard $(SRCS_PATH)*.c ) $(wildcard $(SRCS_PARSE_PATH)*.c) $(wildcard $(SRCS_MAIN_PATH)*.c)
 
 OBJS_PATH		=	objs/
 OBJS			=	$(SRCS:src/%.c=objs/%.o)
