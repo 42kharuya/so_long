@@ -8,13 +8,13 @@ static void	set_element(char **buffer, char *buffer_img, int line_byte, int x, i
 	int	pixel_map;
 
 	element_y = 0;
-	while (element_y < 32)
+	while (element_y < 64)
 	{
 		element_x = 0;
-		while (element_x < 32)
+		while (element_x < 64)
 		{
-			pixel_element = (element_y * 128) + (element_x * 4);
-			pixel_map = (((y * 32) + element_y) * line_byte) + (((x * 32) + element_x) * 4);
+			pixel_element = (element_y * 256) + (element_x * 4);
+			pixel_map = (((y * 64) + element_y) * line_byte) + (((x * 64) + element_x) * 4);
 			(*buffer)[pixel_map + 0] = buffer_img[pixel_element + 0];
 			(*buffer)[pixel_map + 1] = buffer_img[pixel_element + 1];
 			(*buffer)[pixel_map + 2] = buffer_img[pixel_element + 2];

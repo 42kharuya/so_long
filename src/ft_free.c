@@ -13,18 +13,28 @@ void	ft_free_map(char **map)
 	return ;
 }
 
-void	ft_free_img(t_img *img_info, void *mlx)
+static void	ft_free_img(t_img *img_info, void *mlx)
 {
 	mlx_destroy_image(mlx, img_info->collectible);
 	mlx_destroy_image(mlx, img_info->exit);
 	mlx_destroy_image(mlx, img_info->player);
 	mlx_destroy_image(mlx, img_info->wall);
 	mlx_destroy_image(mlx, img_info->space);
+	mlx_destroy_image(mlx, img_info->img);
 	return ;
 }
 
-void	ft_free(t_map *map_info)
+static void	ft_free_vars(t_vars *vars)
 {
-	ft_free_map(map_info->map);
-	ft_free_map(map_info->map_visitable);
+	mlx_destroy_window(vars->mlx, vars->win);
+}
+
+int	ft_free(t_all *all)
+{
+	ft_free_map(all->map_info->map);
+	ft_free_map(all->map_info->map_visitable);
+	ft_free_img(all->img_info, all->vars->mlx);
+	ft_free_vars(all->vars);
+	exit(EXIT_SUCCESS);
+	return (0);
 }

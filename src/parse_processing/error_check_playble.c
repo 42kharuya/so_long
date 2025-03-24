@@ -13,12 +13,14 @@ void	error_check_playble(t_map map_info)
 		{
 			if (map_info.map_visitable[i][j] == 'C')
 			{
-				ft_free(&map_info);
+				ft_free_map(map_info.map);
+				ft_free_map(map_info.map_visitable);
 				error_check_parse_print(PLAYBLE_COLLECTIVE_ERROR);
 			}
 			if (map_info.map_visitable[i][j] == 'E')
 			{
-				ft_free(&map_info);
+				ft_free_map(map_info.map);
+				ft_free_map(map_info.map_visitable);
 				error_check_parse_print(PLAYBLE_EXIT_ERROR);
 			}
 		}

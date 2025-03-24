@@ -28,11 +28,12 @@ static void	init_struct_img_info_buffer(t_img *img_info)
 	return ;
 }
 
-t_img	init_struct_img_info(void *mlx)
+t_img	init_struct_img_info(void *mlx, t_map map_info)
 {
 	t_img	img_info;
 
 	img_info = init_struct_img_info_xpm(mlx);
 	init_struct_img_info_buffer(&img_info);
+	img_info.img =  mlx_new_image(mlx, map_info.horizontal * 64, map_info.vertical * 64);
 	return (img_info);
 }

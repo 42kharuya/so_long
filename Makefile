@@ -2,7 +2,7 @@ NAME			=	so_long
 
 CC				=	cc
 
-CFLAGS			=	-Wall -Wextra -Werror 
+CFLAGS			=	-Wall -Wextra -Werror -g -fsanitize=address
 
 
 INCS			=	-I includes/ -I $(LIBFT_DIR) -I $(PRINTF_DIR) -I $(MLX_DIR)

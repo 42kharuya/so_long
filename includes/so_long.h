@@ -19,8 +19,15 @@
 #define MAP_SURROUNDED_ERROR 10
 #define PLAYBLE_COLLECTIVE_ERROR 11
 #define PLAYBLE_EXIT_ERROR 12
+#define ESC 53
 
 // struct
+typedef struct s_vars
+{
+	void	*mlx;
+	void	*win;
+} t_vars;
+
 typedef struct s_player
 {
 	int	x;
@@ -43,6 +50,7 @@ typedef struct s_map
 
 typedef struct s_img
 {
+	void	*img;
 	void	*player;
 	void	*collectible;
 	void	*exit;
@@ -54,6 +62,13 @@ typedef struct s_img
 	char	*buffer_wall;
 	char	*buffer_space;
 } t_img;
+
+typedef struct s_all
+{
+	t_vars	*vars;
+	t_map	*map_info;
+	t_img	*img_info;
+} t_all;
 
 // prototype
 t_map		init_struct_map_info(char	*map_path);
@@ -69,10 +84,9 @@ int			init_struct_map_info_vertical(char *map_path);
 int			init_struct_map_info_collectible(char **map);
 char		**init_struct_map_info_map_visitable_init(t_map map_info);
 void		init_struct_map_info_map_visitable(char **map_visitable, int x, int y);
-void		ft_free(t_map *map_info);
+int			ft_free(t_all *all);
 void		ft_free_map(char **map);
-t_img		init_struct_img_info(void *mlx);
-void		ft_free_img(t_img *img_info, void *mlx);
+t_img		init_struct_img_info(void *mlx, t_map map_info);
 void		window_set_element(void *img, t_img img_info, t_map map_info);
 
 #endif
