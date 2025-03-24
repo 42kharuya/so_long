@@ -12,9 +12,9 @@ int	main(int argc, char *argv[])
 		error_check_parse_print(NUMBER_OF_ARGUMENT_ERROR);
 	map_info = init_struct_map_info(argv[1]);
 	mlx = mlx_init();
-	win = mlx_new_window(mlx, map_info.horizontal * 64, map_info.vertical * 64, "so_long");
+	win = mlx_new_window(mlx, map_info.horizontal * 32, map_info.vertical * 32, "so_long");
 	img_info = init_struct_img_info(mlx);
-	img = mlx_new_image(mlx, map_info.horizontal * 64, map_info.vertical * 64);
+	img = mlx_new_image(mlx, map_info.horizontal * 32, map_info.vertical * 32);
 	window_set_element(img, img_info, map_info);
 	mlx_put_image_to_window(mlx, win, img, 0, 0);
 	mlx_loop(mlx);
@@ -44,7 +44,7 @@ int	main(int argc, char *argv[])
 // 	i = 0;
 // 	printf ("-----------------------------------------------\n");
 // 	mlx = mlx_init();
-// 	mlx_win = mlx_new_window(mlx, 640, 360, "so_long");
+// 	mlx_win = mlx_new_window(mlx, 320, 360, "so_long");
 // 	ft_free(&map_info);
 // 	return (0);
 // }

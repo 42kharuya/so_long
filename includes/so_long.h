@@ -75,5 +75,4 @@ t_img		init_struct_img_info(void *mlx);
 void		ft_free_img(t_img *img_info, void *mlx);
 void		window_set_element(void *img, t_img img_info, t_map map_info);
 
-
 #endif
