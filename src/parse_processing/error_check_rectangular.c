@@ -2,7 +2,7 @@
 
 void	error_check_rectangular(char **map)
 {
-	int	i;
+	int		i;
 	size_t	pre_length;
 
 	i = 0;

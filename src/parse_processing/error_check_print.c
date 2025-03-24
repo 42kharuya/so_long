@@ -2,7 +2,7 @@
 
 void	error_check_parse_print(int error_check)
 {
-	ft_printf ("Error\n");
+	ft_printf("Error\n");
 	if (error_check == OPEN_ERROR)
 		ft_printf("open function error. Please make sure .ber PATH is correct!\n");
 	else if (error_check == CLOSE_ERROR)

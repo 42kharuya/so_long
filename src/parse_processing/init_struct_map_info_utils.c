@@ -38,7 +38,7 @@ int	init_struct_map_info_vertical(char *map_path)
 	{
 		str = get_next_line(fd);
 		if (str == NULL)
-			break;
+			break ;
 		free (str);
 		vertical++;
 	}
@@ -71,8 +71,8 @@ int	init_struct_map_info_collectible(char **map)
 
 char	**init_struct_map_info_map_visitable_init(t_map map_info)
 {
-	int i;
-	char **map_visitable;
+	int		i;
+	char	**map_visitable;
 
 	map_visitable = (char **)malloc(sizeof(char *) * (map_info.vertical + 1));
 	if (!map_visitable)

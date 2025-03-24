@@ -1,10 +1,10 @@
 #include "../../includes/so_long.h"
 
-static void horizontal_check(char **map, int vertical)
+static void	horizontal_check(char **map, int vertical)
 {
 	int	i;
-	int first_row;
-	int last_row;
+	int	first_row;
+	int	last_row;
 
 	first_row = 0;
 	i = -1;
@@ -29,7 +29,7 @@ static void horizontal_check(char **map, int vertical)
 	return ;
 }
 
-static void vertical_check(char **map, int horizotal)
+static void	vertical_check(char **map, int horizotal)
 {
 	int	i;
 	int	first_column;

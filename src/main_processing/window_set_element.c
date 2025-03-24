@@ -28,9 +28,9 @@ static void	set_element(char **buffer, char *buffer_img, int line_byte, int x, i
 
 static void	set_elements(t_map map_info, t_img img_info, char **buffer, int line_byte)
 {
-	char **map;
-	int	x;
-	int	y;
+	char	**map;
+	int		x;
+	int		y;
 
 	map = map_info.map;
 	y = 0;
@@ -58,7 +58,7 @@ static void	set_elements(t_map map_info, t_img img_info, char **buffer, int line
 void	window_set_element(void *img, t_img img_info, t_map map_info)
 {
 	char	*buffer;
-	int 	line_byte;
+	int		line_byte;
 	int		pixel_bits;
 	int		endian;
 

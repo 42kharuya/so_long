@@ -1,6 +1,6 @@
 #include "../../includes/so_long.h"
 
-static	void	match_against_correct(char **map, int player, int exit, int collectible)
+static void	match_against_correct(char **map, int player, int exit, int collectible)
 {
 	if (player != 1)
 	{
@@ -23,8 +23,8 @@ static	void	match_against_correct(char **map, int player, int exit, int collecti
 void	error_check_element(char **map)
 {
 	int	element[3];
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	element[0] = 0;
 	element[1] = 0;

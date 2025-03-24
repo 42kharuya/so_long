@@ -1,35 +1,8 @@
 #include "../includes/so_long.h"
 
-t_vars	mlx_initializer(t_map map_info)
-{
-	t_vars	vars;
-
-	vars.mlx = mlx_init();
-	vars.win =  mlx_new_window(vars.mlx, map_info.horizontal * 64, map_info.vertical * 64, "so_long");
-	return (vars);
-}
-
-int key_hook(int keycode, t_all *all)
-{
-	printf ("key code:%d\n", keycode);
-	if (keycode == 65307)
-		return (ft_free(all));
-	return (0);
-}
-
-t_all	all_initializer(t_vars *vars, t_map *map_info, t_img *img_info)
-{
-	t_all	all;
-
-	all.vars = vars;
-	all.map_info = map_info;
-	all.img_info = img_info;
-	return (all);
-}
-
 int	main(int argc, char *argv[])
 {
-	t_map 	map_info;
+	t_map	map_info;
 	t_img	img_info;
 	t_vars	vars;
 	t_all	all;
@@ -37,12 +10,12 @@ int	main(int argc, char *argv[])
 	if (argc != 2)
 		error_check_parse_print(NUMBER_OF_ARGUMENT_ERROR);
 	map_info = init_struct_map_info(argv[1]);
-	vars = mlx_initializer(map_info);
+	vars = init_struct_vars(map_info);
 	img_info = init_struct_img_info(vars.mlx, map_info);
-	all = all_initializer(&vars, &map_info, &img_info);
+	all = init_struct_all(&vars, &map_info, &img_info);
 	window_set_element(img_info.img, img_info, map_info);
 	mlx_put_image_to_window(vars.mlx, vars.win, img_info.img, 0, 0);
-	mlx_hook(vars.win, 17, 1L<<0, ft_free, &all);
+	mlx_hook(vars.win, 17, 1L << 0, ft_free, &all);
 	mlx_key_hook(vars.win, key_hook, &all);
 	mlx_loop(vars.mlx);
 	return (0);

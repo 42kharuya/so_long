@@ -2,9 +2,9 @@
 
 static int	search_player_location_y(char **map)
 {
-	int 	i;
-	int 	j;
-	int 	y;
+	int	i;
+	int	j;
+	int	y;
 
 	i = -1;
 	y = 0;
@@ -25,9 +25,9 @@ static int	search_player_location_y(char **map)
 
 static int	search_player_location_x(char **map)
 {
-	int 	i;
-	int 	j;
-	int 	x;
+	int	i;
+	int	j;
+	int	x;
 
 	i = -1;
 	x = 0;

@@ -16,9 +16,9 @@ static t_img	init_struct_img_info_xpm(void *mlx)
 
 static void	init_struct_img_info_buffer(t_img *img_info)
 {
-	int 	line_bytes;
-	int		pixel_bits;
-	int		endian;
+	int	line_bytes;
+	int	pixel_bits;
+	int	endian;
 
 	img_info->buffer_player = mlx_get_data_addr(img_info->player, &pixel_bits, &line_bytes, &endian);
 	img_info->buffer_collectible = mlx_get_data_addr(img_info->collectible, &pixel_bits, &line_bytes, &endian);
@@ -34,6 +34,6 @@ t_img	init_struct_img_info(void *mlx, t_map map_info)
 
 	img_info = init_struct_img_info_xpm(mlx);
 	init_struct_img_info_buffer(&img_info);
-	img_info.img =  mlx_new_image(mlx, map_info.horizontal * 64, map_info.vertical * 64);
+	img_info.img = mlx_new_image(mlx, map_info.horizontal * 64, map_info.vertical * 64);
 	return (img_info);
 }
