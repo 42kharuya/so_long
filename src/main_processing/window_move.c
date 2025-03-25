@@ -48,9 +48,9 @@ void	window_move(t_all *all, int vector, int p_x, int p_y)
 	else if (map[target_y][target_x] == 'C')
 	{
 		map[target_y][target_x] = map[p_y][p_x];
-		(all->map_info->collectible_count)--;
+		(all->map_info->c_count)--;
 	}
-	else if (map[target_y][target_x] == 'E' && (all->map_info->collectible_count) == 0)
+	else if (map[target_y][target_x] == 'E' && (all->map_info->c_count) == 0)
 	{
 		map[target_y][target_x] = map[p_y][p_x];
 		map[p_y][p_x] = '0';

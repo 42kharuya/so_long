@@ -42,10 +42,6 @@ typedef struct s_player
 {
 	int	x;
 	int	y;
-	int	up_location[2];
-	int	down_location[2];
-	int	left_location[2];
-	int	right_location[2];
 }	t_player;
 
 typedef struct s_map
@@ -54,7 +50,7 @@ typedef struct s_map
 	char		**map_visitable;
 	int			vertical;
 	int			horizontal;
-	int			collectible_count;
+	int			c_count;
 	t_player	player_info;
 }	t_map;
 

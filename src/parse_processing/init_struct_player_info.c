@@ -49,19 +49,12 @@ static int	search_player_location_x(char **map)
 t_player	init_struct_player_info(char **map)
 {
 	t_player	player_info;
-	int			location[2];
+	int			x;
+	int			y;
 
-	location[0] = search_player_location_x(map);
-	location[1] = search_player_location_y(map);
-	player_info.x = location[0];
-	player_info.y = location[1];
-	player_info.up_location[0] = location[0];
-	player_info.up_location[1] = location[1] + 1;
-	player_info.down_location[0] = location[0];
-	player_info.down_location[1] = location[1] - 1;
-	player_info.left_location[0] = location[0] - 1;
-	player_info.left_location[1] = location[1];
-	player_info.left_location[0] = location[0] + 1;
-	player_info.left_location[1] = location[1];
+	x = search_player_location_x(map);
+	y = search_player_location_y(map);
+	player_info.x = x;
+	player_info.y = y;
 	return (player_info);
 }

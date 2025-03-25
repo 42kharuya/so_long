@@ -11,7 +11,7 @@ t_map	init_struct_map_info(char *map_path)
 	error_check_element(map_info.map);
 	map_info.horizontal = ft_strlen(map_info.map[0]);
 	error_check_surrounded(map_info.map, map_info.horizontal, map_info.vertical);
-	map_info.collectible_count = init_struct_map_info_collectible(map_info.map);
+	map_info.c_count = init_struct_map_info_collectible(map_info.map);
 	map_info.player_info = init_struct_player_info(map_info.map);
 	map_info.map_visitable = init_struct_map_info_map_visitable_init(map_info);
 	init_struct_map_info_map_visitable(map_info.map_visitable, map_info.player_info.x, map_info.player_info.y);
