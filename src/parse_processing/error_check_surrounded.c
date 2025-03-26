@@ -13,7 +13,7 @@ static void	horizontal_check(char **map, int vertical)
 		if (map[first_row][i] != '1')
 		{
 			ft_free_map(map);
-			error_check_parse_print(MAP_SURROUNDED_ERROR);
+			print_message_parse_error(MAP_SURROUNDED_ERROR);
 		}
 	}
 	last_row = vertical - 1;
@@ -23,7 +23,7 @@ static void	horizontal_check(char **map, int vertical)
 		if (map[last_row][i] != '1')
 		{
 			ft_free_map(map);
-			error_check_parse_print(MAP_SURROUNDED_ERROR);
+			print_message_parse_error(MAP_SURROUNDED_ERROR);
 		}
 	}
 	return ;
@@ -42,7 +42,7 @@ static void	vertical_check(char **map, int horizotal)
 		if (map[i][first_column] != '1')
 		{
 			ft_free_map(map);
-			error_check_parse_print(MAP_SURROUNDED_ERROR);
+			print_message_parse_error(MAP_SURROUNDED_ERROR);
 		}
 	}
 	last_column = horizotal - 1;
@@ -52,14 +52,14 @@ static void	vertical_check(char **map, int horizotal)
 		if (map[i][last_column] != '1')
 		{
 			ft_free_map(map);
-			error_check_parse_print(MAP_SURROUNDED_ERROR);
+			print_message_parse_error(MAP_SURROUNDED_ERROR);
 		}
 	}
 	return ;
 }
 
-void	error_check_surrounded(char **map, int horizontal, int vertical)
+void	error_check_surrounded(t_map map)
 {
-	horizontal_check(map, vertical);
-	vertical_check(map, horizontal);
+	horizontal_check(map.map, map.vertical);
+	vertical_check(map.map, map.horizontal);
 }

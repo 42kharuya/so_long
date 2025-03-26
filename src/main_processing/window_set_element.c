@@ -1,32 +1,35 @@
 #include "../../includes/so_long.h"
 
-static void	set_element(char **buffer, char *buffer_img, int line_byte, int x, int y)
+static void	set_element(t_img img_info, char *buff_ele, int x, int y)
 {
-	int	element_x;
-	int	element_y;
+	int	elem_x;
+	int	elem_y;
 	int	pixel_element;
 	int	pixel_map;
+	int	l_bytes;
 
-	element_y = 0;
-	while (element_y < 64)
+	l_bytes = img_info.l_bytes;
+	elem_y = 0;
+	while (elem_y < 64)
 	{
-		element_x = 0;
-		while (element_x < 64)
+		elem_x = 0;
+		while (elem_x < 64)
 		{
-			pixel_element = (element_y * 256) + (element_x * 4);
-			pixel_map = (((y * 64) + element_y) * line_byte) + (((x * 64) + element_x) * 4);
-			(*buffer)[pixel_map + 0] = buffer_img[pixel_element + 0];
-			(*buffer)[pixel_map + 1] = buffer_img[pixel_element + 1];
-			(*buffer)[pixel_map + 2] = buffer_img[pixel_element + 2];
-			(*buffer)[pixel_map + 3] = buffer_img[pixel_element + 3];
-			element_x++;
+			pixel_element = (elem_y * 256) + (elem_x * 4);
+			pixel_map = (((y * 64) + elem_y) * l_bytes)
+				+ (((x * 64) + elem_x) * 4);
+			img_info.buff_img[pixel_map + 0] = buff_ele[pixel_element + 0];
+			img_info.buff_img[pixel_map + 1] = buff_ele[pixel_element + 1];
+			img_info.buff_img[pixel_map + 2] = buff_ele[pixel_element + 2];
+			img_info.buff_img[pixel_map + 3] = buff_ele[pixel_element + 3];
+			elem_x++;
 		}
-		element_y++;
+		elem_y++;
 	}
 	return ;
 }
 
-static void	set_elements(t_map map_info, t_img img_info, char **buffer, int line_byte)
+static void	set_elements(t_map map_info, t_img img_info)
 {
 	char	**map;
 	int		x;
@@ -40,29 +43,29 @@ static void	set_elements(t_map map_info, t_img img_info, char **buffer, int line
 		while (x < (map_info.horizontal))
 		{
 			if (map[y][x] == 'P')
-				set_element(buffer, img_info.buffer_player, line_byte, x, y);
+				set_element(img_info, img_info.buff_p, x, y);
 			else if (map[y][x] == 'C')
-				set_element(buffer, img_info.buffer_collectible, line_byte, x, y);
+				set_element(img_info, img_info.buff_c, x, y);
 			else if (map[y][x] == 'E')
-				set_element(buffer, img_info.buffer_exit, line_byte, x, y);
+				set_element(img_info, img_info.buff_e, x, y);
 			else if (map[y][x] == '1')
-				set_element(buffer, img_info.buffer_wall, line_byte, x, y);
+				set_element(img_info, img_info.buff_w, x, y);
 			else if (map[y][x] == '0')
-				set_element(buffer, img_info.buffer_space, line_byte, x, y);
+				set_element(img_info, img_info.buff_s, x, y);
 			x++;
 		}
 		y++;
 	}
 }
 
-void	window_set_element(void *img, t_img img_info, t_map map_info)
+void	window_set_element(t_img img_info, t_map map_info)
 {
-	char	*buffer;
-	int		line_byte;
-	int		pixel_bits;
-	int		endian;
+	int		l_bytes;
+	int		p_bits;
+	int		en;
 
-	buffer = mlx_get_data_addr(img, &pixel_bits, &line_byte, &endian);
-	set_elements(map_info, img_info, &buffer, line_byte);
+	img_info.buff_img = mlx_get_data_addr(img_info.img, &p_bits, &l_bytes, &en);
+	img_info.l_bytes = l_bytes;
+	set_elements(map_info, img_info);
 	return ;
 }

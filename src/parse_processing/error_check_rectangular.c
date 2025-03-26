@@ -13,7 +13,7 @@ void	error_check_rectangular(char **map)
 		if (ft_strlen(map[i]) != pre_length)
 		{
 			ft_free_map(map);
-			error_check_parse_print(RECTANGULAR_ERROR);
+			print_message_parse_error(RECTANGULAR_ERROR);
 		}
 		i++;
 	}

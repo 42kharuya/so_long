@@ -1,21 +1,21 @@
 #include "../../includes/so_long.h"
 
-static void	match_against_correct(char **map, int player, int exit, int collectible)
+static void	match_against_correct(char **map, int p, int e, int c)
 {
-	if (player != 1)
+	if (p != 1)
 	{
 		ft_free_map(map);
-		error_check_parse_print(NUMBER_OF_PLAYER_ERROR);
+		print_message_parse_error(NUMBER_OF_PLAYER_ERROR);
 	}
-	else if (exit != 1)
+	else if (e != 1)
 	{
 		ft_free_map(map);
-		error_check_parse_print(NUMBER_OF_EXIT_ERROR);
+		print_message_parse_error(NUMBER_OF_EXIT_ERROR);
 	}
-	else if (collectible < 1)
+	else if (c < 1)
 	{
 		ft_free_map(map);
-		error_check_parse_print(NUMBER_OF_COLLECTIBLE_ERROR);
+		print_message_parse_error(NUMBER_OF_COLLECTIBLE_ERROR);
 	}
 	return ;
 }
@@ -42,7 +42,7 @@ void	error_check_element(char **map)
 			else if (map[i][j] == 'C')
 				element[2]++;
 			else if (map[i][j] != '0' && map[i][j] != '1')
-				error_check_parse_print(INVALID_ELEMENT_ERROR);
+				print_message_parse_error(INVALID_ELEMENT_ERROR);
 		}
 	}
 	match_against_correct(map, element[0], element[1], element[2]);

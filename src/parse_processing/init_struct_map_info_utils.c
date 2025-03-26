@@ -1,6 +1,6 @@
 #include "../../includes/so_long.h"
 
-char	**init_struct_map_info_map(char *map_path, int vertical)
+char	**init_map_info_map(char *map_path, int vertical)
 {
 	int		fd;
 	int		i;
@@ -8,10 +8,10 @@ char	**init_struct_map_info_map(char *map_path, int vertical)
 
 	map = (char **)ft_calloc(sizeof(char *), vertical + 1);
 	if (!map)
-		error_check_parse_print(MALLOC_ERROR);
+		print_message_parse_error(MALLOC_ERROR);
 	fd = open(map_path, O_RDONLY);
 	if (fd == -1)
-		error_check_parse_print(OPEN_ERROR);
+		print_message_parse_error(OPEN_ERROR);
 	i = 0;
 	while (i < vertical)
 	{
@@ -20,11 +20,11 @@ char	**init_struct_map_info_map(char *map_path, int vertical)
 	}
 	map[vertical] = NULL;
 	if (close(fd) == -1)
-		error_check_parse_print(CLOSE_ERROR);
+		print_message_parse_error(CLOSE_ERROR);
 	return (map);
 }
 
-int	init_struct_map_info_vertical(char *map_path)
+int	init_map_info_vertical(char *map_path)
 {
 	int		fd;
 	int		vertical;
@@ -32,7 +32,7 @@ int	init_struct_map_info_vertical(char *map_path)
 
 	fd = open(map_path, O_RDONLY);
 	if (fd == -1)
-		error_check_parse_print(OPEN_ERROR);
+		print_message_parse_error(OPEN_ERROR);
 	vertical = 0;
 	while (1)
 	{
@@ -43,71 +43,71 @@ int	init_struct_map_info_vertical(char *map_path)
 		vertical++;
 	}
 	if (close(fd) == -1)
-		error_check_parse_print(CLOSE_ERROR);
+		print_message_parse_error(CLOSE_ERROR);
 	return (vertical);
 }
 
-int	init_struct_map_info_collectible(char **map)
+int	init_map_info_c(char **map)
 {
 	int	i;
 	int	j;
-	int	collectible;
+	int	c;
 
 	i = 0;
-	collectible = 0;
+	c = 0;
 	while (map[i] != NULL)
 	{
 		j = 0;
 		while (map[i][j] != '\0')
 		{
 			if (map[i][j] == 'C')
-				collectible++;
+				c++;
 			j++;
 		}
 		i++;
 	}
-	return (collectible);
+	return (c);
 }
 
-char	**init_struct_map_info_map_visitable_init(t_map map_info)
+char	**init_map_info_map_v_init(t_map map_info)
 {
 	int		i;
-	char	**map_visitable;
+	char	**map_v;
 
-	map_visitable = (char **)malloc(sizeof(char *) * (map_info.vertical + 1));
-	if (!map_visitable)
+	map_v = (char **)malloc(sizeof(char *) * (map_info.vertical + 1));
+	if (!map_v)
 	{
 		ft_free_map(map_info.map);
-		error_check_parse_print(MALLOC_ERROR);
+		print_message_parse_error(MALLOC_ERROR);
 	}
 	i = 0;
 	while (i < map_info.vertical)
 	{
-		map_visitable[i] = ft_substr(map_info.map[i], 0, ft_strlen(map_info.map[i]));
-		if (!map_visitable[i])
+		map_v[i] = ft_substr(map_info.map[i], 0, ft_strlen(map_info.map[i]));
+		if (!map_v[i])
 		{
 			ft_free_map(map_info.map);
-			error_check_parse_print(MALLOC_ERROR);
+			print_message_parse_error(MALLOC_ERROR);
 		}
 		i++;
 	}
-	map_visitable[i] = NULL;
-	return (map_visitable);
+	map_v[i] = NULL;
+	return (map_v);
 }
 
-void	init_struct_map_info_map_visitable(char **map_visitable, int x, int y)
+void	init_map_info_map_v(char **map_v, int x, int y)
 {
-	if (map_visitable[y][x] == '1')
+	if (map_v[y][x] == '1')
 		return ;
 	else
-		map_visitable[y][x] = 'V';
-	if (map_visitable[y - 1][x] != 'V')
-		init_struct_map_info_map_visitable(map_visitable, x, y - 1);
-	if (map_visitable[y + 1][x] != 'V')
-		init_struct_map_info_map_visitable(map_visitable, x, y + 1);
-	if (map_visitable[y][x - 1] != 'V')
-		init_struct_map_info_map_visitable(map_visitable, x - 1, y);
-	if (map_visitable[y][x + 1] != 'V')
-		init_struct_map_info_map_visitable(map_visitable, x + 1, y);
+		map_v[y][x] = 'V';
+	if (map_v[y - 1][x] != 'V')
+		init_map_info_map_v(map_v, x, y - 1);
+	if (map_v[y + 1][x] != 'V')
+		init_map_info_map_v(map_v, x, y + 1);
+	if (map_v[y][x - 1] != 'V')
+		init_map_info_map_v(map_v, x - 1, y);
+	if (map_v[y][x + 1] != 'V')
+		init_map_info_map_v(map_v, x + 1, y);
 	return ;
 }

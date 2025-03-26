@@ -5,9 +5,8 @@ int	key_hook(int keycode, t_all *all)
 	int	p_x;
 	int	p_y;
 
-	p_x = all->map_info->player_info.x;
-	p_y = all->map_info->player_info.y;
-	printf("keycode:%d\n", keycode);
+	p_x = all->map_info->p_info.x;
+	p_y = all->map_info->p_info.y;
 	if (keycode == ESC)
 		return (ft_free(all));
 	else if (keycode == W || keycode == ALLOW_UP)

@@ -1,6 +1,6 @@
 #include "../../includes/so_long.h"
 
-static int	search_player_location_y(char **map)
+static int	search_p_location_y(char **map)
 {
 	int	i;
 	int	j;
@@ -23,7 +23,7 @@ static int	search_player_location_y(char **map)
 	return (y);
 }
 
-static int	search_player_location_x(char **map)
+static int	search_p_location_x(char **map)
 {
 	int	i;
 	int	j;
@@ -46,15 +46,15 @@ static int	search_player_location_x(char **map)
 	return (x);
 }
 
-t_player	init_struct_player_info(char **map)
+t_player	init_struct_p_info(char **map)
 {
-	t_player	player_info;
+	t_player	p_info;
 	int			x;
 	int			y;
 
-	x = search_player_location_x(map);
-	y = search_player_location_y(map);
-	player_info.x = x;
-	player_info.y = y;
-	return (player_info);
+	x = search_p_location_x(map);
+	y = search_p_location_y(map);
+	p_info.x = x;
+	p_info.y = y;
+	return (p_info);
 }
