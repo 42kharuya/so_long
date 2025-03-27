@@ -8,10 +8,10 @@ char	**init_map_info_map(char *map_path, int vertical)
 
 	map = (char **)ft_calloc(sizeof(char *), vertical + 1);
 	if (!map)
-		print_message_parse_error(MALLOC_ERROR);
+		print_message_func_error(MALLOC_ERROR);
 	fd = open(map_path, O_RDONLY);
 	if (fd == -1)
-		print_message_parse_error(OPEN_ERROR);
+		print_message_func_error(OPEN_ERROR);
 	i = 0;
 	while (i < vertical)
 	{
@@ -20,7 +20,7 @@ char	**init_map_info_map(char *map_path, int vertical)
 	}
 	map[vertical] = NULL;
 	if (close(fd) == -1)
-		print_message_parse_error(CLOSE_ERROR);
+		print_message_func_error(CLOSE_ERROR);
 	return (map);
 }
 
@@ -32,7 +32,7 @@ int	init_map_info_vertical(char *map_path)
 
 	fd = open(map_path, O_RDONLY);
 	if (fd == -1)
-		print_message_parse_error(OPEN_ERROR);
+		print_message_func_error(OPEN_ERROR);
 	vertical = 0;
 	while (1)
 	{
@@ -43,7 +43,7 @@ int	init_map_info_vertical(char *map_path)
 		vertical++;
 	}
 	if (close(fd) == -1)
-		print_message_parse_error(CLOSE_ERROR);
+		print_message_func_error(CLOSE_ERROR);
 	return (vertical);
 }
 
@@ -78,7 +78,7 @@ char	**init_map_info_map_v_init(t_map map_info)
 	if (!map_v)
 	{
 		ft_free_map(map_info.map);
-		print_message_parse_error(MALLOC_ERROR);
+		print_message_func_error(MALLOC_ERROR);
 	}
 	i = 0;
 	while (i < map_info.vertical)
@@ -87,7 +87,7 @@ char	**init_map_info_map_v_init(t_map map_info)
 		if (!map_v[i])
 		{
 			ft_free_map(map_info.map);
-			print_message_parse_error(MALLOC_ERROR);
+			print_message_func_error(MALLOC_ERROR);
 		}
 		i++;
 	}

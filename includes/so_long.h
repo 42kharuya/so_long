@@ -101,5 +101,6 @@ int			key_hook(int keycode, t_all *all);
 t_all		init_struct_all(t_vars *vars, t_map *map_info, t_img *img_info);
 void		window_move(t_all *all, int vector, int p_x, int p_y);
 void		print_message_success(t_all *all);
+	void	print_message_func_error(int error_check);
 
 #endif

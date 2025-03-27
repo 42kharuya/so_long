@@ -9,8 +9,7 @@ INCS			=	-I includes/ -I $(LIBFT_DIR) -I $(PRINTF_DIR) -I $(MLX_DIR)
 
 SRCS_PATH		=	src/
 SRCS_PARSE_PATH =	src/parse_processing/
-SRCS_MAIN_PATH =	src/main_processing/
-SRCS			=	$(wildcard $(SRCS_PATH)*.c ) $(wildcard $(SRCS_PARSE_PATH)*.c) $(wildcard $(SRCS_MAIN_PATH)*.c)
+SRCS			=	$(wildcard $(SRCS_PATH)*.c ) $(wildcard $(SRCS_PARSE_PATH)*.c)
 
 OBJS_PATH		=	objs/
 OBJS			=	$(SRCS:src/%.c=objs/%.o)
