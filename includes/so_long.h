@@ -6,21 +6,22 @@
 /*   By: kharuya <haruya.0411.k@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:22:01 by kharuya           #+#    #+#             */
-/*   Updated: 2025/03/27 15:24:35 by kharuya          ###   ########.fr       */
+/*   Updated: 2025/03/27 19:27:46 by kharuya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <mlx.h>
+# include <../minilibx/mlx.h>
+# include <stdbool.h>
 # include "../libft/libft.h"
 # include "../ft_printf/ft_printf.h"
 
 // macro(error)
-# define OPEN_ERROR 0
-# define CLOSE_ERROR 1
-# define MALLOC_ERROR 2
+# define OPEN_ERROR 1
+# define CLOSE_ERROR 2
+# define MALLOC_ERROR 3
 # define RECTANGULAR_ERROR 3
 # define PATH_ERROR 4
 # define INVALID_ELEMENT_ERROR 5
@@ -31,6 +32,7 @@
 # define MAP_SURROUNDED_ERROR 10
 # define PLAYBLE_COLLECTIVE_ERROR 11
 # define PLAYBLE_EXIT_ERROR 12
+# define WINDOW_SIZE_ERROR 13
 
 // macro(move)
 # define ESC 65307
@@ -60,10 +62,12 @@ typedef struct s_map
 {
 	char		**map;
 	char		**map_v;
+	int			moves;
 	int			vertical;
 	int			horizontal;
 	int			c_count;
 	t_player	p_info;
+	bool		end_flag;
 }	t_map;
 
 typedef struct s_img
@@ -114,5 +118,8 @@ t_all		init_struct_all(t_vars *vars, t_map *map_info, t_img *img_info);
 void		window_move(t_all *all, int vector, int p_x, int p_y);
 void		print_message_success(t_all *all);
 void		print_message_func_error(int error_check);
+void		print_message_moves(t_all *all);
+void		error_check_vertical_size(int vertical);
+void		error_check_horizontal_size(int horizontal, char **map);
 
 #endif

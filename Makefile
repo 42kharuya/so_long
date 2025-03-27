@@ -6,7 +6,7 @@
 #    By: kharuya <haruya.0411.k@gmail.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/27 15:23:46 by kharuya           #+#    #+#              #
-#    Updated: 2025/03/27 15:23:52 by kharuya          ###   ########.fr        #
+#    Updated: 2025/03/27 19:28:46 by kharuya          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME			=	so_long
 
 CC				=	cc
 
-CFLAGS			=	-Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS			=	-Wall -Wextra -Werror -g -fsanitize=leak
 
 
 INCS			=	-I includes/ -I $(LIBFT_DIR) -I $(PRINTF_DIR) -I $(MLX_DIR)
@@ -49,7 +49,7 @@ endif
 
 all:	$(NAME)
 
-$(NAME): $(OBJS) $(LIBFT) $(PRINTF) $(MLX)
+$(NAME): $(MLX) $(OBJS) $(LIBFT) $(PRINTF)
 	$(CC) $(CFLAGS) $(INCS) $(OBJS) $(LIBFT) $(PRINTF) $(MLX) $(FRAMEWORKS) -o $(NAME)
 
 $(OBJS_PATH)%.o : $(SRCS_PATH)%.c

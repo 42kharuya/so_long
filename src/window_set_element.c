@@ -6,11 +6,11 @@
 /*   By: kharuya <haruya.0411.k@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:23:41 by kharuya           #+#    #+#             */
-/*   Updated: 2025/03/27 15:23:42 by kharuya          ###   ########.fr       */
+/*   Updated: 2025/03/27 15:36:30 by kharuya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../includes/so_long.h"
 
 static void	set_element(t_img img_info, char *buff_ele, int x, int y)
 {

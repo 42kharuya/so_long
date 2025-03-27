@@ -6,11 +6,11 @@
 /*   By: kharuya <haruya.0411.k@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:23:35 by kharuya           #+#    #+#             */
-/*   Updated: 2025/03/27 15:23:37 by kharuya          ###   ########.fr       */
+/*   Updated: 2025/03/27 16:31:15 by kharuya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../includes/so_long.h"
 
 static int	get_dst_x(int p_x, int vector)
 {
@@ -59,16 +59,16 @@ void	window_move(t_all *all, int vector, int p_x, int p_y)
 	else if (map[dst_y][dst_x] == 'C')
 		(all->map_info->c_count)--;
 	else if (map[dst_y][dst_x] == 'E' && (all->map_info->c_count) == 0)
-	{
-		map[dst_y][dst_x] = map[p_y][p_x];
-		map[p_y][p_x] = '0';
-		print_message_success(all);
-	}
+		all->map_info->end_flag = true;
+	print_message_moves(all);
 	map[dst_y][dst_x] = map[p_y][p_x];
 	map[p_y][p_x] = '0';
+	if (all->map_info->end_flag == true)
+		print_message_success(all);
 	all->map_info->p_info.x = dst_x;
 	all->map_info->p_info.y = dst_y;
 	window_set_element(*(all->img_info), *(all->map_info));
 	mlx_put_image_to_window(all->vars->mlx, all->vars->win,
 		all->img_info->img, 0, 0);
+	return ;
 }

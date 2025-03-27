@@ -6,7 +6,7 @@
 /*   By: kharuya <haruya.0411.k@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:23:31 by kharuya           #+#    #+#             */
-/*   Updated: 2025/03/27 15:23:32 by kharuya          ###   ########.fr       */
+/*   Updated: 2025/03/27 19:27:35 by kharuya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	print_message_parse_error(int error_check)
 		ft_printf("map is not playble. Unable to acquire collectible.\n");
 	else if (error_check == PLAYBLE_EXIT_ERROR)
 		ft_printf("map is not playble. can't get to the exit.\n");
+	else if (error_check == WINDOW_SIZE_ERROR)
+		ft_printf("The window is out of view.\n");
 	exit(EXIT_FAILURE);
 }
 
@@ -49,9 +51,14 @@ void	print_message_func_error(int error_check)
 	exit(EXIT_FAILURE);
 }
 
+void	print_message_moves(t_all *all)
+{
+	ft_printf("MOVES:%d\n", ++(all->map_info->moves));
+	return ;
+}
+
 void	print_message_success(t_all *all)
 {
-	window_set_element(*(all->img_info), *(all->map_info));
 	mlx_put_image_to_window(all->vars->mlx, all->vars->win,
 		all->img_info->img, 0, 0);
 	ft_printf("congratulations!!\nThe game has been cleared!\n");
