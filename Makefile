@@ -6,7 +6,7 @@
 #    By: kharuya <haruya.0411.k@gmail.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/27 15:23:46 by kharuya           #+#    #+#              #
-#    Updated: 2025/03/27 19:28:46 by kharuya          ###   ########.fr        #
+#    Updated: 2025/03/28 15:19:42 by kharuya          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,12 @@ INCS			=	-I includes/ -I $(LIBFT_DIR) -I $(PRINTF_DIR) -I $(MLX_DIR)
 
 SRCS_PATH		=	src/
 SRCS_PARSE_PATH =	src/parse_processing/
-SRCS			=	$(wildcard $(SRCS_PATH)*.c ) $(wildcard $(SRCS_PARSE_PATH)*.c)
+SRCS			=	$(SRCS_PARSE_PATH)error_check_element.c $(SRCS_PARSE_PATH)error_check_path_extension.c $(SRCS_PARSE_PATH)error_check_playble.c \
+					$(SRCS_PARSE_PATH)error_check_rectangular.c $(SRCS_PARSE_PATH)error_check_surrounded.c $(SRCS_PARSE_PATH)error_check_window_size.c \
+					$(SRCS_PARSE_PATH)init_struct_all.c $(SRCS_PARSE_PATH)init_struct_img_info.c $(SRCS_PARSE_PATH)init_struct_map_info_utils.c \
+					$(SRCS_PARSE_PATH)init_struct_map_info.c $(SRCS_PARSE_PATH)init_struct_player_info.c $(SRCS_PARSE_PATH)init_struct_vars.c \
+					$(SRCS_PATH)ft_free.c $(SRCS_PATH)key_hook.c $(SRCS_PATH)main.c $(SRCS_PATH)print_message.c \
+					$(SRCS_PATH)window_move.c $(SRCS_PATH)window_set_element.c
 
 OBJS_PATH		=	objs/
 OBJS			=	$(SRCS:src/%.c=objs/%.o)

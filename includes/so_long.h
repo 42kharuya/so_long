@@ -6,14 +6,14 @@
 /*   By: kharuya <haruya.0411.k@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:22:01 by kharuya           #+#    #+#             */
-/*   Updated: 2025/03/27 19:27:46 by kharuya          ###   ########.fr       */
+/*   Updated: 2025/03/28 15:20:20 by kharuya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <../minilibx/mlx.h>
+# include "../minilibx/mlx.h"
 # include <stdbool.h>
 # include "../libft/libft.h"
 # include "../ft_printf/ft_printf.h"
